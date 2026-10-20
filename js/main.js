@@ -439,7 +439,7 @@
     });
 
     // Elementos sueltos: aparecen con un leve ascenso
-    const singles = '.eyebrow:not(.hero__eyebrow), .lead, .process__cta, .zone__note, .zone__copy .btn, .faq__intro .btn, ' +
+    const singles = '.eyebrow:not(.hero__eyebrow), .lead, .videos__cta, .process__cta, .zone__note, .zone__copy .btn, .faq__intro .btn, ' +
       '.contact__list li, .form-card, .faq__list details, .footer__grid > *, .repertoire__intro .tabs, .repertoire__panels';
     g.set(singles, { opacity: 0, y: 32 });
     ST.batch(singles, {
@@ -628,6 +628,36 @@
   }
 
   /* ------------------------------------------------------------------
+     VIDEOS: botón de play propio; al reproducir uno se pausan los demás.
+     Sin JS (o si algo falla) quedan los controles nativos del <video>.
+  ------------------------------------------------------------------ */
+  function initVideos() {
+    const cards = $$('[data-video]');
+    if (!cards.length) return;
+    const videos = cards.map((card) => $('video', card));
+
+    cards.forEach((card, i) => {
+      const video = videos[i];
+      const play = $('.vid__play', card);
+      if (!video || !play) return;
+
+      video.controls = false;
+      play.hidden = false;
+
+      play.addEventListener('click', () => {
+        video.controls = true;
+        play.hidden = true;
+        video.focus({ preventScroll: true });
+        video.play().catch(() => { video.controls = false; play.hidden = false; });
+      });
+
+      video.addEventListener('play', () => {
+        videos.forEach((other) => { if (other !== video) other.pause(); });
+      });
+    });
+  }
+
+  /* ------------------------------------------------------------------
      FORMULARIO: valida y envía el mensaje a WhatsApp
   ------------------------------------------------------------------ */
   function initForm() {
@@ -756,6 +786,7 @@
     wireWhatsApp();
     const closeMenu = initMenu();
     initTabs();
+    initVideos();
     initForm();
     initSpotlight();
 

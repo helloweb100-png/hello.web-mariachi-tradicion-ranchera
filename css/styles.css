@@ -418,7 +418,53 @@ body::after {
 .songs { display: grid; gap: .35rem 2rem; }
 .songs li { font-family: var(--f-display); font-weight: 500; font-size: clamp(1.35rem, 1.05rem + 1.2vw, 1.85rem); line-height: 1.3; padding-block: .4rem; }
 
-/* ---------- 13. PROCESO ---------- */
+/* ---------- 13. VIDEOS ---------- */
+/* Los videos no se descargan hasta pulsar play (preload="none"); el póster es un JPG ligero. */
+.videos {
+  padding-block: clamp(5rem, 11vw, 9rem);
+  border-top: 1px solid var(--line);
+  background: radial-gradient(60% 50% at 6% 10%, rgba(201, 162, 74, .08), transparent 70%), var(--ink);
+}
+.videos__head { display: grid; gap: 1.1rem; justify-items: start; max-width: 46rem; margin-bottom: clamp(2.5rem, 6vw, 4.5rem); }
+.videos__grid { display: grid; gap: 2.25rem 1.5rem; }
+.videos__cta { margin-top: clamp(2.5rem, 6vw, 4rem); }
+
+.vid { display: grid; align-content: start; gap: .9rem; }
+.vid__frame {
+  position: relative; overflow: hidden; aspect-ratio: 16 / 9;
+  border-radius: var(--r); border: 1px solid var(--line); background: var(--ink-3);
+  box-shadow: 0 34px 60px -38px rgba(0, 0, 0, .9);
+  transition: border-color .5s;
+}
+.vid:hover .vid__frame { border-color: var(--line-strong); }
+.vid__frame video { display: block; width: 100%; height: 100%; object-fit: cover; background: #000; }
+/* El video vertical trae barras negras incrustadas (82 px arriba y 79 abajo de 832): el recuadro las recorta */
+.vid--tall { width: min(100%, 22rem); justify-self: center; }
+.vid--tall .vid__frame { aspect-ratio: 464 / 664; }
+
+/* Botón de play propio (main.js lo activa; sin JS se usan los controles nativos) */
+.vid__play {
+  position: absolute; inset: 0; display: grid; place-items: center; cursor: pointer;
+  background: linear-gradient(to top, rgba(10, 8, 6, .5), rgba(10, 8, 6, 0) 55%);
+  -webkit-tap-highlight-color: transparent;
+}
+.vid__play:focus-visible { outline-offset: -6px; border-radius: var(--r); }
+.vid__play > span {
+  position: relative; display: grid; place-items: center; width: 4.5rem; height: 4.5rem; border-radius: 50%;
+  color: #1b1306; font-size: 1.7rem;
+  background: linear-gradient(135deg, #f1d992, var(--gold) 55%, #a98334);
+  box-shadow: 0 16px 38px -10px rgba(0, 0, 0, .75), inset 0 1px 0 rgba(255, 255, 255, .45);
+  transition: transform .6s var(--ease);
+}
+.vid__play > span::before { content: ""; position: absolute; inset: 0; border-radius: inherit; border: 2px solid var(--gold-hi); animation: pulse 2.8s ease-out infinite; pointer-events: none; }
+.vid__play i { line-height: 0; margin-left: .12em; }
+.vid__play:hover > span, .vid__play:focus-visible > span { transform: scale(1.1); }
+
+.vid__cap { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
+.vid__title { font-family: var(--f-display); font-weight: 600; font-size: clamp(1.15rem, 1.05rem + .5vw, 1.4rem); line-height: 1.25; }
+.vid__time { flex: none; font-size: .8rem; font-weight: 500; letter-spacing: .16em; font-variant-numeric: tabular-nums; color: var(--gold-hi); }
+
+/* ---------- 14. PROCESO ---------- */
 .process { padding-block: clamp(5rem, 11vw, 9rem); background: var(--ink-2); border-block: 1px solid var(--line); }
 .process__head { display: grid; gap: 1.1rem; justify-items: start; max-width: 46rem; margin-bottom: clamp(2.5rem, 6vw, 4.5rem); }
 .steps { position: relative; padding-left: 4.25rem; }
@@ -439,7 +485,7 @@ body::after {
 .step p { color: var(--ivory-2); max-width: 40ch; margin-top: .55rem; text-wrap: pretty; }
 .process__cta { margin-top: clamp(2.5rem, 6vw, 4rem); }
 
-/* ---------- 14. COBERTURA ---------- */
+/* ---------- 15. COBERTURA ---------- */
 .zone { position: relative; isolation: isolate; overflow: hidden; text-align: center; padding-block: clamp(6rem, 13vw, 11rem); }
 .zone__radar {
   position: absolute; z-index: -1; left: 50%; top: 50%; width: min(160vw, 1000px); aspect-ratio: 1; translate: -50% -50%;
@@ -457,7 +503,7 @@ body::after {
 .chips li { padding: .55rem 1.1rem; border-radius: var(--r-pill); border: 1px solid var(--line-strong); background: rgba(10, 8, 6, .6); color: var(--ivory); font-size: .92rem; }
 .zone__note { color: var(--ivory-2); }
 
-/* ---------- 15. PREGUNTAS ---------- */
+/* ---------- 16. PREGUNTAS ---------- */
 .faq { padding-block: clamp(5rem, 11vw, 9rem); background: var(--ink-2); border-top: 1px solid var(--line); }
 .faq__grid { display: grid; gap: 2.5rem; }
 .faq__intro { display: grid; gap: 1.2rem; justify-items: start; align-content: start; }
@@ -471,7 +517,7 @@ body::after {
 .faq__answer { overflow: hidden; }
 .faq__answer p { color: var(--ivory-2); max-width: 60ch; padding-bottom: 1.5rem; }
 
-/* ---------- 16. CONTACTO ---------- */
+/* ---------- 17. CONTACTO ---------- */
 .contact { position: relative; isolation: isolate; overflow: hidden; padding-block: clamp(5rem, 11vw, 9rem); }
 .contact__bg { position: absolute; inset: 0; z-index: -2; overflow: hidden; }
 .contact__bg img { width: 100%; height: 118%; object-fit: cover; object-position: 30% 100%; }
@@ -516,7 +562,7 @@ body::after {
 .form-success h3 { font-family: var(--f-display); font-weight: 600; font-size: clamp(1.6rem, 1.2rem + 1.4vw, 2.2rem); line-height: 1.15; }
 .form-success p { color: var(--ivory-2); max-width: 34ch; }
 
-/* ---------- 17. FOOTER ---------- */
+/* ---------- 18. FOOTER ---------- */
 .footer { position: relative; overflow: hidden; background: var(--ink-2); border-top: 1px solid var(--line); padding-top: clamp(3.5rem, 8vw, 6rem); }
 .footer__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem 1.5rem; }
 .footer__col--contact { grid-column: 1 / -1; order: 3; }
@@ -543,7 +589,7 @@ body::after {
 }
 .footer__legal { padding-block: 1.75rem calc(6rem + env(safe-area-inset-bottom)); font-size: .86rem; color: var(--ivory-3); border-top: 1px solid var(--line); margin-top: clamp(1.5rem, 4vw, 3rem); }
 
-/* ---------- 18. BOTÓN FLOTANTE DE WHATSAPP ---------- */
+/* ---------- 19. BOTÓN FLOTANTE DE WHATSAPP ---------- */
 .wa-float {
   position: fixed; right: max(1rem, env(safe-area-inset-right)); bottom: max(1rem, env(safe-area-inset-bottom)); z-index: var(--z-float);
   display: inline-flex; align-items: center; height: 3.6rem; min-width: 3.6rem; padding: 0 .85rem; justify-content: center; border-radius: var(--r-pill);
@@ -566,6 +612,7 @@ body::after {
   .hero__badge { width: 112px; }
   .facts { gap: 2.5rem 2rem; }
   .songs { grid-template-columns: 1fr 1fr; }
+  .songs li:last-child:nth-child(odd) { grid-column: 1 / -1; }
   .form__row { grid-template-columns: 1fr 1fr; }
   .footer__grid { grid-template-columns: repeat(3, 1fr); }
   .footer__brand { grid-column: auto; }
@@ -608,6 +655,14 @@ body::after {
   .repertoire__grid { grid-template-columns: 5fr 7fr; gap: clamp(3rem, 6vw, 6rem); align-items: center; }
   .repertoire__seal { right: -12%; }
 
+  /* Videos: dos horizontales apiladas a la izquierda y el vertical a la derecha.
+     El vertical marca la altura y los horizontales se ajustan a ella (recorte de pocos píxeles). */
+  .videos__grid { grid-template-columns: minmax(0, 1.135fr) minmax(0, 1fr); gap: 2.25rem 1.75rem; }
+  .vid--tall { grid-column: 2; grid-row: 1 / span 2; width: auto; justify-self: stretch; }
+  .vid:not(.vid--tall) { grid-template-rows: minmax(0, 1fr) auto; }
+  .vid:not(.vid--tall) .vid__frame { aspect-ratio: auto; }
+  .vid:not(.vid--tall) video { position: absolute; inset: 0; }
+
   /* Proceso: línea horizontal */
   .steps { padding-left: 0; padding-top: 4.5rem; }
   .steps__rail { left: 1.5rem; right: 0; top: 1.5rem; bottom: auto; width: auto; height: 2px; }
@@ -634,6 +689,11 @@ body::after {
   .wa-float:hover .wa-float__label, .wa-float:focus-visible .wa-float__label { max-width: 12rem; margin-left: .7rem; }
 }
 
+/* 1024–1099 px: el nav no tiene espacio para un sexto enlace sin pisar el nombre de la marca */
+@media (min-width: 1024px) and (max-width: 1099.98px) {
+  .nav__extra { display: none; }
+}
+
 @media (min-width: 1280px) {
   :root { --header-h: 76px; }
 }
@@ -655,7 +715,7 @@ body::after {
    ========================================================================== */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
-  .hero__beams, .hero__embers, .zone__radar i, .zone__sweep, .wa-float::before { display: none; }
+  .hero__beams, .hero__embers, .zone__radar i, .zone__sweep, .wa-float::before, .vid__play > span::before { display: none; }
   .marquee__track { width: auto; flex-wrap: wrap; }
   .marquee__group[aria-hidden="true"] { display: none; }
 }

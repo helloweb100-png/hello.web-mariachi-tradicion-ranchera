@@ -178,6 +178,7 @@
       <ul class="nav__list">
         <li><a href="#servicios">Servicios</a></li>
         <li><a href="#repertorio">Repertorio</a></li>
+        <li class="nav__extra"><a href="#videos">Videos</a></li>
         <li><a href="#proceso">Proceso</a></li>
         <li><a href="#cobertura">Cobertura</a></li>
         <li><a href="#preguntas">Preguntas</a></li>
@@ -198,6 +199,7 @@
     <ul>
       <li><a href="#servicios" data-menu-link>Servicios</a></li>
       <li><a href="#repertorio" data-menu-link>Repertorio</a></li>
+      <li><a href="#videos" data-menu-link>Videos</a></li>
       <li><a href="#proceso" data-menu-link>Proceso</a></li>
       <li><a href="#cobertura" data-menu-link>Cobertura</a></li>
       <li><a href="#preguntas" data-menu-link>Preguntas</a></li>
@@ -414,27 +416,81 @@
       <div class="panel is-active" role="tabpanel" id="panel-serenatas" aria-labelledby="tab-serenatas">
         <p class="panel__note">Para despertar sonrisas o decir lo que las palabras no alcanzan.</p>
         <ul class="songs">
-          <li>Las Mañanitas</li><li>Amor eterno</li><li>Sabor a mí</li><li>Hermoso cariño</li><li>Si nos dejan</li><li>Júrame</li>
+          <li>Las Mañanitas</li><li>Amor eterno</li><li>Sabor a mí</li><li>Hermoso cariño</li><li>Si nos dejan</li><li>Júrame</li><li>Hasta donde te quiero</li>
         </ul>
       </div>
       <div class="panel" role="tabpanel" id="panel-bodas" aria-labelledby="tab-bodas" hidden>
         <p class="panel__note">Música para que el amor suene como siempre lo soñaste.</p>
         <ul class="songs">
-          <li>Bésame mucho</li><li>Quiéreme mucho</li><li>Contigo aprendí</li><li>Amor eterno</li><li>Sabor a mí</li><li>Cielito lindo</li>
+          <li>Bésame mucho</li><li>Quiéreme mucho</li><li>Contigo aprendí</li><li>Amor eterno</li><li>Sabor a mí</li><li>Cielito lindo</li><li>Hasta donde te quiero</li>
         </ul>
       </div>
       <div class="panel" role="tabpanel" id="panel-xv" aria-labelledby="tab-xv" hidden>
         <p class="panel__note">Tradición, alegría y canciones que toda la familia recuerda.</p>
         <ul class="songs">
-          <li>Las Mañanitas</li><li>Cielito lindo</li><li>El Son de la Negra</li><li>México lindo y querido</li><li>Hermoso cariño</li><li>Guadalajara</li>
+          <li>Las Mañanitas</li><li>Cielito lindo</li><li>El Son de la Negra</li><li>México lindo y querido</li><li>Hermoso cariño</li><li>Guadalajara</li><li>Hasta donde te quiero</li>
         </ul>
       </div>
       <div class="panel" role="tabpanel" id="panel-cumple" aria-labelledby="tab-cumple" hidden>
         <p class="panel__note">Mañanitas, risas y todos cantando a coro.</p>
         <ul class="songs">
-          <li>Las Mañanitas</li><li>El Rey</li><li>Volver, volver</li><li>Cielito lindo</li><li>La Bikina</li><li>Guadalajara</li>
+          <li>Las Mañanitas</li><li>El Rey</li><li>Volver, volver</li><li>Cielito lindo</li><li>La Bikina</li><li>Guadalajara</li><li>Hasta donde te quiero</li>
         </ul>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     VIDEOS (preload="none": no se descarga nada hasta pulsar play)
+============================================================ -->
+<section class="videos" id="videos" aria-labelledby="videos-title">
+  <div class="container">
+    <header class="videos__head">
+      <p class="eyebrow">Videos</p>
+      <h2 class="title" id="videos-title" data-split>Míranos en acción</h2>
+      <p class="lead">Así suena y se vive una presentación nuestra. Dale play e imagina esta música en tu fiesta.</p>
+    </header>
+
+    <div class="videos__grid" data-stagger>
+      <figure class="vid" data-video>
+        <div class="vid__frame">
+          <video controls preload="none" playsinline poster="img/poster-mariachi-patio.jpg" aria-label="Video: música en vivo en el patio">
+            <source src="video/mariachi-patio.mp4" type="video/mp4">
+            Tu navegador no puede reproducir este video.
+          </video>
+          <button class="vid__play" type="button" aria-label="Reproducir video: música en vivo en el patio" hidden><span><i class="ph-fill ph-play" aria-hidden="true"></i></span></button>
+        </div>
+        <figcaption class="vid__cap"><span class="vid__title">Música en vivo en el patio</span><time class="vid__time" datetime="PT3M26S">3:26</time></figcaption>
+      </figure>
+
+      <figure class="vid vid--tall" data-video>
+        <div class="vid__frame">
+          <video controls preload="none" playsinline poster="img/poster-mariachi-jardin.jpg" aria-label="Video: trompetas en el jardín">
+            <source src="video/mariachi-jardin.mp4" type="video/mp4">
+            Tu navegador no puede reproducir este video.
+          </video>
+          <button class="vid__play" type="button" aria-label="Reproducir video: trompetas en el jardín" hidden><span><i class="ph-fill ph-play" aria-hidden="true"></i></span></button>
+        </div>
+        <figcaption class="vid__cap"><span class="vid__title">Trompetas en el jardín</span><time class="vid__time" datetime="PT4M37S">4:37</time></figcaption>
+      </figure>
+
+      <figure class="vid" data-video>
+        <div class="vid__frame">
+          <video controls preload="none" playsinline poster="img/poster-mariachi-salon.jpg" aria-label="Video: fiesta en salón de eventos">
+            <source src="video/mariachi-salon.mp4" type="video/mp4">
+            Tu navegador no puede reproducir este video.
+          </video>
+          <button class="vid__play" type="button" aria-label="Reproducir video: fiesta en salón de eventos" hidden><span><i class="ph-fill ph-play" aria-hidden="true"></i></span></button>
+        </div>
+        <figcaption class="vid__cap"><span class="vid__title">Fiesta en salón de eventos</span><time class="vid__time" datetime="PT1M18S">1:18</time></figcaption>
+      </figure>
+    </div>
+
+    <div class="videos__cta">
+      <a class="btn btn--gold btn--lg" href="https://wa.me/525611678708" target="_blank" rel="noopener" data-wa data-msg="Hola, vi los videos del mariachi y quiero cotizar para mi evento." data-magnetic>
+        <i class="ph-fill ph-whatsapp-logo" aria-hidden="true"></i><span>Quiero esta música en mi fiesta</span>
+      </a>
     </div>
   </div>
 </section>
@@ -662,6 +718,7 @@
       <ul>
         <li><a href="#servicios">Servicios</a></li>
         <li><a href="#repertorio">Repertorio</a></li>
+        <li><a href="#videos">Videos</a></li>
         <li><a href="#proceso">Proceso</a></li>
         <li><a href="#cobertura">Cobertura</a></li>
         <li><a href="#preguntas">Preguntas</a></li>
